@@ -1,27 +1,15 @@
 #include <stdio.h>
-#include <stdio.h>
+#define navio 3
 
 int main(){
 
     int i, j;
-    int numero = 1;
     char letra = 'A';
-
-    int tabuleiro [10][10] = {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 3, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 3, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
+    int tabuleiro[10][10] = {0};
 
     printf("TABULEIRO BATALHA NAVAL \n");
 
+    //posicionamento das letras
     printf(" ");
     printf(" ");
     for (i = 0; i < 10; i++) 
@@ -32,24 +20,31 @@ int main(){
 
     printf("\n");
 
+    //diagonal
+    for (i = 0; i < 2; i++) 
+    { 
+        tabuleiro[i + 5][i + 5] = navio;
+    }
 
+    for (i = 0; i < 3; i++) 
+    { 
+        tabuleiro[i + 4][4 - i] = navio;
+    }
+
+    //posicionamento dos números
     for (j = 0; j < 10; j++) 
     {
-        printf("%d ", j + 1);
+        printf("%d ", j + 1); // impressão das linhas de 1 a 10
+        //impressão do tabuleiro
         for (i = 0; i < 10; i++) 
         {
-            printf("%d ", tabuleiro[j][i]);
+            printf("%d ", tabuleiro[i][j]); //Exibindo o tabuleiro
         }
         printf("\n");
     }
     
     return 0;
 }
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
